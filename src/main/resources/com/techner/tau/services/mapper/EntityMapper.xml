@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.EntityMapper">
+	<cache flushInterval="7200000" />
+	<select id="getAllVariables" resultType="Variable">
+		SELECT V.ID_VARIABLE as id, V.SHORT_DESCRIPTION as name, V.CODE as code, V.UNIT as unit, V.DESCRIPTION as tooltip, V.ICON_FILENAME as filename
+		FROM STATION_VARIABLE S LEFT JOIN VARIABLE V ON S.ID_VARIABLE = V.ID_VARIABLE WHERE V.SHOW_FE = 1 AND S.ID_STATION = #{value} AND S.ENABLE = 1 ORDER BY
+		S.ID_VARIABLE ASC;
+	</select>
+	
+	<select id="getAllAlerts" resultType="Alert">
+		SELECT A.ID_ALERT as id, A.ALERT_DESCRIPTION as description, A.CODE as code, V.DESCRIPTION as variable, A.CHECK_IN as checkIn FROM ALERT A JOIN VARIABLE V ON A.ID_VARIABLE = V.ID_VARIABLE; 
+	</select>
+	
+	<select id="getAllStations" resultType="StationInfo">
+		SELECT S.ID_STATION as id, SI.LOCATION_NAME as location, SI.ALTITUDE as	altitude, S.IS_DEFAULT as defaul, SI.LATITUDE as latitude, SI.LONGITUDE as longitude, 
+		SS.SUNSET as sunset, SS.SUNRISE as sunrise FROM STATION S LEFT JOIN STATION_INFORMATION SI ON
+		SI.ID_STATION_INFORMATION = S.ID_STATION_INFORMATION LEFT JOIN SUNRISE_SUNSET_INFORMATION SS ON	SI.ID_STATION_INFORMATION =
+		SS.ID_STATION_INFORMATION WHERE DATE_FORMAT(SS.DATE,'%d%m%Y') =	DATE_FORMAT(NOW(),'%d%m%Y') AND S.ENABLE = 1 ORDER BY S.ID_STATION DESC;
+	</select>
+</mapper>

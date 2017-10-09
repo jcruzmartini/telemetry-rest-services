@@ -1,0 +1,171 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "resourcePath" : "/reports",
+  "apis" : [ {
+    "path" : "/reports/{id}/daily",
+    "description" : "Operaciones relacionadas con reportes ",
+    "operations" : [ {
+      "httpMethod" : "POST",
+      "summary" : "Crea o actualiza reporte diario",
+      "responseClass" : "ServiceResult",
+      "nickname" : "createOrUpdateDailyReport",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "description" : "Información del reporte",
+        "paramType" : "body",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "com.techner.tau.common.entity.ServiceRequest<com.techner.tau.common.entity.DailyReport>"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Parámetros obligatorios email o password vacíos"
+      } ]
+    }, {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene info del reporte diario",
+      "responseClass" : "DailyReport",
+      "nickname" : "getDailyReport",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Parámetros obligatorios email o password vacíos"
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "ServiceResult" : {
+      "id" : "ServiceResult",
+      "properties" : {
+        "result" : {
+          "notes" : "Objeto Resultado de la llamada",
+          "type" : "T"
+        },
+        "success" : {
+          "notes" : "Resultado de la llamada",
+          "type" : "boolean"
+        }
+      }
+    },
+    "DailyReport" : {
+      "id" : "DailyReport",
+      "properties" : {
+        "id" : {
+          "description" : "id",
+          "notes" : "Id",
+          "type" : "int"
+        },
+        "wednesday" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "0", "1" ],
+            "valueType" : "LIST"
+          },
+          "description" : "wednesday",
+          "notes" : "Miercoles",
+          "type" : "int"
+        },
+        "emailEnable" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "0", "1" ],
+            "valueType" : "LIST"
+          },
+          "description" : "emailEnable",
+          "notes" : "Notificación por Email",
+          "type" : "int"
+        },
+        "smsEnable" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "0", "1" ],
+            "valueType" : "LIST"
+          },
+          "description" : "smsEnable",
+          "notes" : "Notificación por sms",
+          "type" : "int"
+        },
+        "thursday" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "0", "1" ],
+            "valueType" : "LIST"
+          },
+          "description" : "thursday",
+          "notes" : "Jueves",
+          "type" : "int"
+        },
+        "monday" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "0", "1" ],
+            "valueType" : "LIST"
+          },
+          "description" : "monday",
+          "notes" : "Lunes",
+          "type" : "int"
+        },
+        "sunday" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "0", "1" ],
+            "valueType" : "LIST"
+          },
+          "description" : "sunday",
+          "notes" : "Domingo",
+          "type" : "int"
+        },
+        "saturday" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "0", "1" ],
+            "valueType" : "LIST"
+          },
+          "description" : "saturday",
+          "notes" : "Sábado",
+          "type" : "int"
+        },
+        "hour" : {
+          "description" : "hour",
+          "notes" : "Horario a ser enviado, Formato: [hh:mm]",
+          "type" : "string"
+        },
+        "friday" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "0", "1" ],
+            "valueType" : "LIST"
+          },
+          "description" : "friday",
+          "notes" : "Viernes",
+          "type" : "int"
+        },
+        "tuesday" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "0", "1" ],
+            "valueType" : "LIST"
+          },
+          "description" : "tuesday",
+          "notes" : "Martes",
+          "type" : "int"
+        }
+      }
+    }
+  }
+}

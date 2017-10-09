@@ -1,0 +1,36 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "apis" : [ {
+    "path" : "/measures",
+    "description" : ""
+  }, {
+    "path" : "/graphics",
+    "description" : ""
+  }, {
+    "path" : "/forecast",
+    "description" : ""
+  }, {
+    "path" : "/notifications",
+    "description" : ""
+  }, {
+    "path" : "/users",
+    "description" : ""
+  }, {
+    "path" : "/custom-queries",
+    "description" : ""
+  }, {
+    "path" : "/stations",
+    "description" : ""
+  }, {
+    "path" : "/entity",
+    "description" : ""
+  }, {
+    "path" : "/reports",
+    "description" : ""
+  }, {
+    "path" : "/alerts",
+    "description" : ""
+  } ]
+}

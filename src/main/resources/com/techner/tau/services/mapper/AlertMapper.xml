@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.AlertMapper">
+	<cache flushInterval="800000"/>
+	
+	<resultMap id="AlertEventMap" type="AlertEvent">
+	    <id property="id" column="e_id" />
+	    <result property="startDate" column="startDate" />
+		<result property="lastUpdate" column="lastUpdate" />
+		<result property="lastUpdateInMin" column="lastUpdateInMin" />
+		<result property="value" column="value" />
+		<association property="rule" resultMap="AlertRuleMap" columnPrefix="r_"/>
+	</resultMap>
+	
+	<resultMap id="AlertRuleMap" type="AlertRule">
+	    <id property="id" column="id" />
+   	    <result property="startDate" column="startDate" />
+		<result property="endDate" column="endDate" />
+		<result property="low" column="low" />
+		<result property="high" column="high" />
+		<result property="smsEnable" column="smsEnable" />
+		<result property="emailEnable" column="emailEnable" />
+		<association property="alert" column="id" select="getAlert"/>
+	</resultMap>
+	
+	<resultMap id="AlertMap" type="Alert">
+	    <id property="id" column="id" />
+   	    <result property="variable" column="variable" />
+		<result property="code" column="code" />
+		<result property="description" column="description" />
+		<result property="checkIn" column="checkIn" />
+	</resultMap>
+	
+	<select id="getAlertsEvent" resultMap="AlertEventMap">
+		SELECT AE.ID_ALERT_EVENT as e_id, AR.ID_ALERT_RULE as r_id, AR.START_DATE as r_startDate, AR.END_DATE as r_endDate, 
+		AR.MIN as r_low, AR.MAX as r_high, A.ID_ALERT as a_id, A.ALERT_DESCRIPTION as a_description, A.CODE as a_code, AE.START_DATE as startDate, 
+		ROUND((UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(AE.LAST_UPDATE))/60,0) as lastUpdateInMin, AE.LAST_UPDATE as lastUpdate, AE.VALUE as value from ALERT_EVENT AE, 
+		ALERT_RULE AR, ALERT A WHERE AR.ID_ALERT_RULE = AE.ID_ALERT_RULE AND A.ID_ALERT = AR.ID_ALERT
+		<choose>
+			<when test="type == 'TODAY'">
+				AND ( DATE_FORMAT(AE.START_DATE,'%d%m%y') = DATE_FORMAT(NOW(),'%d%m%y') OR
+				DATE_FORMAT(AE.LAST_UPDATE,'%d%m%y') = DATE_FORMAT(NOW(),'%d%m%y') )
+			</when>
+			<when test="type == 'ACTIVE'">
+				AND AE.LAST_UPDATE is NULL AND AR.END_DATE IS NULL
+			</when>
+		</choose>
+		AND AR.ID_STATION = #{idStation} ORDER BY AE.START_DATE DESC;
+	</select>
+
+	<select id="getAllAlertRules" resultMap="AlertRuleMap">
+		SELECT AR.ID_ALERT_RULE as id, AR.START_DATE as startDate, AR.END_DATE as endDate, AR.MIN as low, AR.MAX as high, 
+		AR.SMS_NOTIFICATION_ENABLE as smsEnable, AR.EMAIL_NOTIFICATION_ENABLE as emailEnable FROM ALERT_RULE AR, 
+		ALERT A WHERE AR.ID_ALERT = A.ID_ALERT AND AR.ID_STATION = #{idStation} ORDER BY AR.ID_ALERT DESC;
+	</select>
+	
+	<select id="getAlert" resultMap="AlertMap">
+		SELECT A.ID_ALERT as id, A.CODE as code, ALERT_DESCRIPTION as description, V.CODE as variable, A.CHECK_IN as checkIn FROM ALERT A, ALERT_RULE AR, 
+		VARIABLE V WHERE AR.ID_ALERT_RULE = #{id} AND AR.ID_ALERT = A.ID_ALERT AND A.ID_VARIABLE = V.ID_VARIABLE LIMIT 1;
+	</select>
+	
+	<insert id="insertRule">
+		INSERT INTO ALERT_RULE (ID_STATION,ID_ALERT,START_DATE,END_DATE,MIN,MAX,SMS_NOTIFICATION_ENABLE,EMAIL_NOTIFICATION_ENABLE) VALUES
+		(#{idStation}, #{rule.alert.id}, #{rule.startDate}, #{rule.endDate}, #{rule.low}, #{rule.high}, #{rule.smsEnable}, #{rule.emailEnable} );
+	</insert>
+	
+	<update id="updateRule">
+		UPDATE ALERT_RULE 
+		<set>
+			<if test="rule.alert != null">
+				<if test="rule.alert.id != null">ID_ALERT=#{rule.alert.id},</if>
+			</if>
+		 	<if test="rule.startDate != null">START_DATE=#{rule.startDate},</if>
+		 	END_DATE=#{rule.endDate},
+		 	<if test="rule.low != null">MIN=#{rule.low},</if>
+		 	<if test="rule.high != null">MAX=#{rule.high},</if>
+		 	<if test="rule.smsEnable != null">SMS_NOTIFICATION_ENABLE=#{rule.smsEnable},</if>
+		 	<if test="rule.emailEnable != null">EMAIL_NOTIFICATION_ENABLE=#{rule.emailEnable},</if>
+		</set>
+		WHERE ID_STATION = #{idStation} AND ID_ALERT_RULE = #{rule.id}
+	</update>
+
+</mapper>

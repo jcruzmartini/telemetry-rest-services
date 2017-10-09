@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.OperationMapper">
+
+	<insert id="insertSMS">
+	    INSERT INTO SMS (DATE,FROME,STATE,TEXT) 
+	    <if test="force">
+	        values (NOW(),'UI','P', #{operation});
+	    </if>
+	    <if test="!force">
+	        values (NOW(),'UI','PA', #{operation});
+	    </if>
+	</insert>
+	<insert id="insertOperation">
+	 	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+	   		SELECT MAX(ID_SMS) FROM SMS
+	  	</selectKey>
+		INSERT INTO SMS_OPERATION (ID_SMS,ID_STATION,SUCCESS) values (#{id},#{idStation},0);
+	</insert>
+</mapper>

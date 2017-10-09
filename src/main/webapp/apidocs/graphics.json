@@ -1,0 +1,133 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "resourcePath" : "/graphics",
+  "apis" : [ {
+    "path" : "/graphics/{id}/evolution",
+    "description" : "Pone a disposición información para ser mostrada en gráficos ",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene la información para ser mostrada en el gráfico de evolución de las variables",
+      "responseClass" : "GraphDataResult",
+      "nickname" : "getInfo",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Id de la estación inválido"
+      }, {
+        "code" : 500,
+        "reason" : "Información de la estación no encontrada"
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "DataScale" : {
+      "id" : "DataScale",
+      "properties" : {
+        "scale" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Variable" : {
+      "id" : "Variable",
+      "properties" : {
+        "id" : {
+          "notes" : "Identificador",
+          "type" : "int"
+        },
+        "unit" : {
+          "notes" : "Unidad",
+          "type" : "string"
+        },
+        "smsDescription" : {
+          "notes" : "Nombre de la variable acortada para mostrar por SMS",
+          "type" : "string"
+        },
+        "name" : {
+          "notes" : "Nombre de la variable",
+          "type" : "string"
+        },
+        "filename" : {
+          "notes" : "Icono del avatar",
+          "type" : "string"
+        },
+        "code" : {
+          "notes" : "Código",
+          "type" : "string"
+        },
+        "calculated" : {
+          "notes" : "Es Calculada?",
+          "type" : "int"
+        },
+        "tooltip" : {
+          "notes" : "Texto auxiliar",
+          "type" : "string"
+        }
+      }
+    },
+    "GraphDataResult" : {
+      "id" : "GraphDataResult",
+      "properties" : {
+        "entries" : {
+          "notes" : "Lista de variables a graficar",
+          "items" : {
+            "$ref" : "GraphData"
+          },
+          "type" : "Array"
+        }
+      }
+    },
+    "GraphData" : {
+      "id" : "GraphData",
+      "properties" : {
+        "w" : {
+          "notes" : "Información semanal",
+          "items" : {
+            "$ref" : "DataScale"
+          },
+          "type" : "Array"
+        },
+        "d" : {
+          "notes" : "Información día",
+          "items" : {
+            "$ref" : "DataScale"
+          },
+          "type" : "Array"
+        },
+        "m" : {
+          "notes" : "Información mensual",
+          "items" : {
+            "$ref" : "DataScale"
+          },
+          "type" : "Array"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "variable" : {
+          "notes" : "Variable",
+          "type" : "Variable"
+        },
+        "y" : {
+          "notes" : "Información anual",
+          "items" : {
+            "$ref" : "DataScale"
+          },
+          "type" : "Array"
+        }
+      }
+    }
+  }
+}

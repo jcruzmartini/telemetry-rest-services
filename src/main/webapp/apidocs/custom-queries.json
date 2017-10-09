@@ -1,0 +1,201 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "resourcePath" : "/custom-queries",
+  "apis" : [ {
+    "path" : "/custom-queries/{id}/query",
+    "description" : "Consultas especiales",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Realiza calculos especiales dependiendo el tipo de query proporcionado",
+      "responseClass" : "QueryResult",
+      "nickname" : "calculate",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "name" : "initDate",
+        "description" : "Fecha desde",
+        "paramType" : "query",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "DateParam"
+      }, {
+        "name" : "endDate",
+        "description" : "Fecha hasta",
+        "paramType" : "query",
+        "required" : false,
+        "allowMultiple" : false,
+        "dataType" : "DateParam"
+      }, {
+        "name" : "type",
+        "description" : "Tipo de consulta",
+        "paramType" : "query",
+        "allowableValues" : {
+          "valueType" : "LIST",
+          "values" : [ "grados-dia", "lluvia-acumulada", "horas-luz", "horas-frio", "evapotranspiration" ],
+          "valueType" : "LIST"
+        },
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "string"
+      }, {
+        "name" : "param",
+        "description" : "Parametro auxiliar de consulta",
+        "paramType" : "query",
+        "required" : false,
+        "allowMultiple" : false,
+        "dataType" : "string"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Parametros inválidos"
+      }, {
+        "code" : 500,
+        "reason" : "Error realizando calculos especiales"
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "DateParam" : {
+      "id" : "DateParam",
+      "properties" : {
+        "date" : {
+          "type" : "Date"
+        }
+      }
+    },
+    "QueryResult" : {
+      "id" : "QueryResult",
+      "properties" : {
+        "value" : {
+          "description" : "value",
+          "notes" : "Resultado de la query",
+          "type" : "double"
+        }
+      }
+    },
+    "Variable" : {
+      "id" : "Variable",
+      "properties" : {
+        "id" : {
+          "notes" : "Identificador",
+          "type" : "int"
+        },
+        "unit" : {
+          "notes" : "Unidad",
+          "type" : "string"
+        },
+        "smsDescription" : {
+          "notes" : "Nombre de la variable acortada para mostrar por SMS",
+          "type" : "string"
+        },
+        "name" : {
+          "notes" : "Nombre de la variable",
+          "type" : "string"
+        },
+        "filename" : {
+          "notes" : "Icono del avatar",
+          "type" : "string"
+        },
+        "code" : {
+          "notes" : "Código",
+          "type" : "string"
+        },
+        "calculated" : {
+          "notes" : "Es Calculada?",
+          "type" : "int"
+        },
+        "tooltip" : {
+          "notes" : "Texto auxiliar",
+          "type" : "string"
+        }
+      }
+    },
+    "Measure" : {
+      "id" : "Measure",
+      "properties" : {
+        "min" : {
+          "notes" : "Mínimo",
+          "type" : "double"
+        },
+        "max" : {
+          "notes" : "Máximo",
+          "type" : "double"
+        },
+        "value" : {
+          "notes" : "Valor",
+          "type" : "double"
+        },
+        "avg" : {
+          "notes" : "Promedio",
+          "type" : "double"
+        },
+        "date" : {
+          "notes" : "Fecha",
+          "type" : "Date"
+        },
+        "type" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "actual", "month", "anual", "last" ],
+            "valueType" : "LIST"
+          },
+          "notes" : "Tipo de la medida",
+          "type" : "string"
+        }
+      }
+    },
+    "MeasureResult" : {
+      "id" : "MeasureResult",
+      "properties" : {
+        "id" : {
+          "type" : "int"
+        },
+        "values" : {
+          "notes" : "Valor de la medida",
+          "items" : {
+            "$ref" : "Measure"
+          },
+          "type" : "Array"
+        },
+        "variable" : {
+          "notes" : "Variable medida",
+          "type" : "Variable"
+        }
+      }
+    },
+    "ListString" : {
+      "id" : "ListString",
+      "properties" : {
+        "list" : {
+          "items" : {
+            "$ref" : "T"
+          },
+          "type" : "Array"
+        }
+      }
+    },
+    "ActualMeasuresResult" : {
+      "id" : "ActualMeasuresResult",
+      "properties" : {
+        "lastUpdate" : {
+          "notes" : "Ultimas vez que la estación actualizó",
+          "type" : "int"
+        },
+        "entries" : {
+          "notes" : "Lista de Medidas",
+          "items" : {
+            "$ref" : "MeasureResult"
+          },
+          "type" : "Array"
+        }
+      }
+    }
+  }
+}

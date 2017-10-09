@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.UserMapper">
+	<cache flushInterval="1000"/>
+	<resultMap id="userMap" type="User">
+		<id property="id" column="ID_USER" />
+		<result property="name" column="NAME" />
+		<result property="lastname" column="LAST_NAME" />
+		<result property="email" column="EMAIL" />
+		<result property="active" column="IS_ACTIVE" />
+		<result property="admin" column="IS_ADMIN" />
+		<collection property="stations" ofType="StationInfo" >
+		       <id property="id" column="id_station"/>
+		       <id property="location" column="location_name"/>
+		       <id property="altitude" column="altitude"/>
+		       <id property="latitude" column="latitude"/>
+   		       <id property="longitude" column="longitude"/>
+		       <id property="defaul" column="is_default"/>
+		</collection>
+	</resultMap>
+
+	<select id="login" parameterType="User" resultMap="userMap">
+		SELECT U.ID_USER, U.NAME, U.LAST_NAME, U.EMAIL, U.IS_ACTIVE,U.IS_ADMIN, S.ID_STATION, S.IS_DEFAULT,
+		SI.LOCATION_NAME, SI.ALTITUDE ,SI.LATITUDE, SI.LONGITUDE FROM USER U JOIN CUSTOMER C
+		ON U.ID_CUSTOMER = C.ID_CUSTOMER JOIN STATION S ON S.ID_CUSTOMER =
+		C.ID_CUSTOMER JOIN STATION_INFORMATION SI ON S.ID_STATION_INFORMATION =
+		SI.ID_STATION_INFORMATION WHERE U.EMAIL = #{email} AND U.PASSWORD =
+		#{password} AND U.IS_ACTIVE = 1;
+	</select>
+
+	<select id="getUser" parameterType="java.lang.Integer" resultMap="userMap">
+		SELECT ID_USER, NAME, LAST_NAME, EMAIL, PASSWORD, IS_ACTIVE, IS_ADMIN FROM USER
+		WHERE ID_USER = #{id} LIMIT 1
+	</select>
+
+	<update id="updateUser" parameterType="User">
+		UPDATE USER 
+		<set>
+			<if test="name != null">NAME=#{name},</if>
+		 	<if test="lastname != null">LAST_NAME=#{lastname},</if>
+		 	<if test="email != null">EMAIL=#{email},</if>
+		 	<if test="password != null">PASSWORD=#{password},</if>
+		</set>
+		WHERE ID_USER = #{id}
+	</update>
+
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO USER (NAME, LAST_NAME, EMAIL, IS_ACTIVE, IS_ACTIVE, PASSWORD) VALUES
+		(#{name}, #{lastname}, lower(#{email}), #{active}, #{admin}, #{password})
+	</insert>
+
+</mapper>

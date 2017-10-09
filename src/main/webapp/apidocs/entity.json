@@ -1,0 +1,154 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "resourcePath" : "/entity",
+  "apis" : [ {
+    "path" : "/entity/{id}/variable/all",
+    "description" : "Operaciones relacionadas con entidades",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene la información de las variables habilitadas para una estación",
+      "responseClass" : "com.techner.tau.services.entity.EntityResult<Variable>",
+      "nickname" : "getAllVariables",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 500,
+        "reason" : "Error buscando información de las variables dadas de alta en el sistema"
+      } ]
+    } ]
+  }, {
+    "path" : "/entity/alert/all",
+    "description" : "Operaciones relacionadas con entidades",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene la información de todas las alertas en el sistema",
+      "responseClass" : "com.techner.tau.services.entity.EntityResult<Alert>",
+      "nickname" : "getAllAlerts",
+      "errorResponses" : [ {
+        "code" : 500,
+        "reason" : "Error buscando información de las variables dadas de alta en el sistema"
+      } ]
+    } ]
+  }, {
+    "path" : "/entity/station/all",
+    "description" : "Operaciones relacionadas con entidades",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene la información de todas las estaciones en el sistema",
+      "responseClass" : "com.techner.tau.services.entity.EntityResult<StationInfo>",
+      "nickname" : "getAllStations",
+      "errorResponses" : [ {
+        "code" : 500,
+        "reason" : "Error buscando información de las estaciones dadas de alta en el sistema"
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "StationInfo" : {
+      "id" : "StationInfo",
+      "properties" : {
+        "id" : {
+          "type" : "int"
+        },
+        "location" : {
+          "notes" : "Ubicación textual",
+          "type" : "string"
+        },
+        "altitude" : {
+          "notes" : "Altitude del lugar donde esta ubicada la estacion",
+          "type" : "double"
+        },
+        "sunset" : {
+          "notes" : "Hora de puesta del sol",
+          "type" : "Date"
+        },
+        "is_default" : {
+          "notes" : "Estación por defecto",
+          "type" : "int"
+        },
+        "longitude" : {
+          "notes" : "Longitude para ubicación GPS",
+          "type" : "double"
+        },
+        "sunrise" : {
+          "notes" : "Hora de salida del sol",
+          "type" : "Date"
+        },
+        "latitude" : {
+          "notes" : "Latitude para ubicación GPS",
+          "type" : "double"
+        }
+      }
+    },
+    "Variable" : {
+      "id" : "Variable",
+      "properties" : {
+        "id" : {
+          "notes" : "Identificador",
+          "type" : "int"
+        },
+        "unit" : {
+          "notes" : "Unidad",
+          "type" : "string"
+        },
+        "smsDescription" : {
+          "notes" : "Nombre de la variable acortada para mostrar por SMS",
+          "type" : "string"
+        },
+        "name" : {
+          "notes" : "Nombre de la variable",
+          "type" : "string"
+        },
+        "filename" : {
+          "notes" : "Icono del avatar",
+          "type" : "string"
+        },
+        "code" : {
+          "notes" : "Código",
+          "type" : "string"
+        },
+        "calculated" : {
+          "notes" : "Es Calculada?",
+          "type" : "int"
+        },
+        "tooltip" : {
+          "notes" : "Texto auxiliar",
+          "type" : "string"
+        }
+      }
+    },
+    "Alert" : {
+      "id" : "Alert",
+      "properties" : {
+        "id" : {
+          "description" : "id",
+          "notes" : "Id",
+          "type" : "int"
+        },
+        "description" : {
+          "description" : "description",
+          "notes" : "Descripción",
+          "type" : "string"
+        },
+        "code" : {
+          "description" : "code",
+          "notes" : "Código",
+          "type" : "string"
+        },
+        "variable" : {
+          "description" : "variable",
+          "notes" : "Variable involucrada",
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+    <token>
+        <enable>true</enable>
+        <age>518400000</age>
+        <wildcar>
+        	<value>psJiOyqM5XvnSGkq998xpzeq</value>
+        	<value>psCJiAOyRqML5XvOnSGkqG998AxpzYeq</value>
+        </wildcar>
+    </token>
+	<database>
+		<driver>com.mysql.jdbc.Driver</driver>
+		<url>jdbc:mysql://tau01.com:3307/smsbd?socketTimeout=60000</url>
+		<username>cfontana0</username>
+		<password>carlitoz</password>
+		<environment>
+			<id>development</id>
+		</environment>
+		<c3p0>
+		    <acquireRetryAttempts>5</acquireRetryAttempts>
+		    <maxPoolSize>20</maxPoolSize>
+		    <minPoolSize>5</minPoolSize>
+		    <maxStatements>100</maxStatements>
+		    <idleConnectionTestPeriod>100</idleConnectionTestPeriod>
+		    <acquireIncrement>2</acquireIncrement>
+		    <preferredTestQuery>select 1;</preferredTestQuery>
+		    <unreturnedConnectionTimeout>60000</unreturnedConnectionTimeout>
+		</c3p0>
+	</database>
+	<dmz>
+		<path>users/login</path>
+		<path>stations/monitoring</path>
+	</dmz>
+	<operations-allowed>
+		<operation>RESTART</operation>
+		<operation>AA</operation>
+		<operation>BA</operation>
+		<operation>SETRTC</operation>
+		<operation>CSH</operation>
+	</operations-allowed>
+	<endpoint>
+	    <yr>http://api.met.no/weatherapi/locationforecastlts/1.2/?lat=%s;lon=%s</yr>
+	</endpoint>
+</services>

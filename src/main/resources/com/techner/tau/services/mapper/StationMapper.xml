@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.StationMapper">
+	<cache flushInterval="1000"/>
+	<select id="getStationInfo" parameterType="java.lang.Integer" resultType="StationInfo">
+		SELECT SI.LOCATION_NAME as location, SI.ALTITUDE as	altitude, S.IS_DEFAULT as defaul, SI.LATITUDE as latitude, SI.LONGITUDE as longitude, 
+		SS.SUNSET as sunset, SS.SUNRISE as sunrise FROM STATION S LEFT JOIN STATION_INFORMATION SI ON
+		SI.ID_STATION_INFORMATION = S.ID_STATION_INFORMATION LEFT JOIN SUNRISE_SUNSET_INFORMATION SS ON	SI.ID_STATION_INFORMATION =
+		SS.ID_STATION_INFORMATION WHERE S.ID_STATION = #{value} AND DATE_FORMAT(SS.DATE,'%d%m%Y') =	DATE_FORMAT(NOW(),'%d%m%Y') LIMIT 1;
+	</select>
+	
+	<update id="update" parameterType="StationInfo">
+		UPDATE STATION_INFORMATION SI LEFT JOIN STATION S ON S.ID_STATION_INFORMATION = SI.ID_STATION_INFORMATION
+		<set>
+			<if test="location != null">SI.LOCATION_NAME=#{location},</if>
+		 	<if test="altitude != null">SI.ALTITUDE=#{altitude},</if>
+		 	<if test="latitude != null">SI.LATITUDE=#{latitude},</if>
+		 	<if test="longitude != null">SI.LONGITUDE=#{longitude},</if>
+		 	<if test="defaul != null">S.IS_DEFAULT=#{defaul},</if>
+		</set>
+		WHERE S.ID_STATION = #{id}
+	</update>
+	
+	<select id="isValidStation" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT count(*) FROM STATION WHERE ID_STATION = #{value} AND ENABLE = 1;
+	</select>
+</mapper>

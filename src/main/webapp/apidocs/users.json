@@ -1,0 +1,117 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "resourcePath" : "/users",
+  "apis" : [ {
+    "path" : "/users",
+    "description" : "Operaciones relacionadas con usuarios ",
+    "operations" : [ {
+      "httpMethod" : "PUT",
+      "summary" : "Realiza el update de una estación",
+      "responseClass" : "User",
+      "nickname" : "update",
+      "parameters" : [ {
+        "description" : "Información del usuario",
+        "paramType" : "body",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "com.techner.tau.common.entity.ServiceRequest<com.techner.tau.common.entity.User>"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Parámetro obligatorio id vacío"
+      } ]
+    } ]
+  }, {
+    "path" : "/users/login",
+    "description" : "Operaciones relacionadas con usuarios ",
+    "operations" : [ {
+      "httpMethod" : "POST",
+      "summary" : "Realiza login de un usuario",
+      "responseClass" : "User",
+      "nickname" : "login",
+      "parameters" : [ {
+        "description" : "Información del usuario",
+        "paramType" : "body",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "com.techner.tau.common.entity.ServiceRequest<com.techner.tau.common.entity.User>"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Parámetros obligatorios email o password vacíos"
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "User" : {
+      "id" : "User",
+      "properties" : {
+        "id" : {
+          "type" : "int"
+        },
+        "stations" : {
+          "items" : {
+            "$ref" : "StationInfo"
+          },
+          "type" : "Array"
+        },
+        "token" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "is_active" : {
+          "type" : "boolean"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "lastname" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        }
+      }
+    },
+    "StationInfo" : {
+      "id" : "StationInfo",
+      "properties" : {
+        "id" : {
+          "type" : "int"
+        },
+        "location" : {
+          "notes" : "Ubicación textual",
+          "type" : "string"
+        },
+        "altitude" : {
+          "notes" : "Altitude del lugar donde esta ubicada la estacion",
+          "type" : "double"
+        },
+        "sunset" : {
+          "notes" : "Hora de puesta del sol",
+          "type" : "Date"
+        },
+        "is_default" : {
+          "notes" : "Estación por defecto",
+          "type" : "int"
+        },
+        "longitude" : {
+          "notes" : "Longitude para ubicación GPS",
+          "type" : "double"
+        },
+        "sunrise" : {
+          "notes" : "Hora de salida del sol",
+          "type" : "Date"
+        },
+        "latitude" : {
+          "notes" : "Latitude para ubicación GPS",
+          "type" : "double"
+        }
+      }
+    }
+  }
+}

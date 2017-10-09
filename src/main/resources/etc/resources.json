@@ -1,0 +1,40 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "apis" : [ {
+    "path" : "/apidocs/alerts.json",
+    "description" : "Servicios de Alertas"
+  }, {
+    "path" : "/apidocs/notifications.json",
+    "description" : "Servicios de Notificaciones"
+  }, {
+    "path" : "/apidocs/measures.json",
+    "description" : "Servicios de Medidas"
+  }, {
+    "path" : "/apidocs/users.json",
+    "description" : "Servicios de Medidas"
+  }, {
+    "path" : "/apidocs/stations.json",
+    "description" : "Servicios de Estaciones"
+  }, {
+    "path" : "/apidocs/custom-queries.json",
+    "description" : "Servicios de Consultas Especiales"
+  }, {
+    "path" : "/apidocs/graphics.json",
+    "description" : "Servicios de Gráficos"
+  }, {
+    "path" : "/apidocs/entity.json",
+    "description" : "Servicios de Información de Entidades"
+  }, {
+    "path" : "/apidocs/reports.json",
+    "description" : "Servicios de Reportes Periódicos"
+  }, {
+    "path" : "/apidocs/forecast.json",
+    "description" : "Servicios de Pronósticos"
+  }, {
+    "path" : "/apidocs/operations.json",
+    "description" : "Servicios de Operaciones"
+  }
+   ]
+}

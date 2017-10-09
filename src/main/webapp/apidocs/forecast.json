@@ -1,0 +1,50 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "resourcePath" : "/forecast",
+  "apis" : [ {
+    "path" : "/forecast/{latitude}/{longitude}",
+    "description" : "Servicios de Pronostico del tiempo",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Brinda pronóstico dependiendo posicion GPS",
+      "responseClass" : "ServiceResult",
+      "nickname" : "forecast",
+      "parameters" : [ {
+        "name" : "latitude",
+        "description" : "Latitude",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "string"
+      }, {
+        "name" : "longitude",
+        "description" : "Longitude",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "string"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Parámetros obligatorios latitude o longitude vacíos"
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "ServiceResult" : {
+      "id" : "ServiceResult",
+      "properties" : {
+        "result" : {
+          "notes" : "Objeto Resultado de la llamada",
+          "type" : "T"
+        },
+        "success" : {
+          "notes" : "Resultado de la llamada",
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}

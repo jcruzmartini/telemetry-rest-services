@@ -1,0 +1,318 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "resourcePath" : "/measures",
+  "apis" : [ {
+    "path" : "/measures/summary/monthly/{id}/{year}/{month}/{codes}",
+    "description" : "Operaciones relacionadas con medidas obtenidas por las estaciones",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene resumen MENSUAL para un mes especificado",
+      "responseClass" : "ActualMeasuresResult",
+      "nickname" : "getMonthlySummary",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "name" : "month",
+        "description" : "Mes a consultar",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "name" : "year",
+        "description" : "Año a consultar",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "name" : "codes",
+        "description" : "Lista de código de variables a consultar, separador [,]",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : true,
+        "dataType" : "ListString"
+      } ],
+      "errorResponses" : [ {
+        "code" : 500,
+        "reason" : "Error obtiendo resumen de medidas"
+      }, {
+        "code" : 400,
+        "reason" : "Parámetros obligatorios no presentes"
+      } ]
+    } ]
+  }, {
+    "path" : "/measures/{id}/historical",
+    "description" : "Operaciones relacionadas con medidas obtenidas por las estaciones",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene las medidas HISTORICAS",
+      "responseClass" : "ActualMeasuresResult",
+      "nickname" : "getHistoricalData",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "name" : "initDate",
+        "description" : "Fecha desde",
+        "paramType" : "query",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "DateParam"
+      }, {
+        "name" : "endDate",
+        "description" : "Fecha hasta",
+        "paramType" : "query",
+        "required" : false,
+        "allowMultiple" : false,
+        "dataType" : "DateParam"
+      }, {
+        "name" : "codes",
+        "description" : "Lista de codigo de variables a consultar, separador [,]",
+        "paramType" : "query",
+        "required" : false,
+        "allowMultiple" : true,
+        "dataType" : "ListString"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Parámetros inválidos"
+      }, {
+        "code" : 500,
+        "reason" : "Error obtiendo medidas historicas"
+      } ]
+    } ]
+  }, {
+    "path" : "/measures/{id}/actual",
+    "description" : "Operaciones relacionadas con medidas obtenidas por las estaciones",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene las medidas ACTUALES",
+      "responseClass" : "ActualMeasuresResult",
+      "nickname" : "getActual",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 500,
+        "reason" : "Error obtiendo medidas actuales"
+      } ]
+    } ]
+  }, {
+    "path" : "/measures/{id}/summary",
+    "description" : "Operaciones relacionadas con medidas obtenidas por las estaciones",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene resumen DIARIO, MENSUAL y ANUAL",
+      "responseClass" : "ActualMeasuresResult",
+      "nickname" : "getSummary",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 500,
+        "reason" : "Error obtiendo resumen de medidas"
+      } ]
+    } ]
+  }, {
+    "path" : "/measures/summary/daily/{id}/{year}/{month}/{day}/{codes}",
+    "description" : "Operaciones relacionadas con medidas obtenidas por las estaciones",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene resumen DIARIO para un día especificado",
+      "responseClass" : "ActualMeasuresResult",
+      "nickname" : "getDailySummary",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "name" : "day",
+        "description" : "Día a consultar",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "name" : "month",
+        "description" : "Mes a consultar",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "name" : "year",
+        "description" : "Año a consultar",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "name" : "codes",
+        "description" : "Lista de código de variables a consultar, separador [,]",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : true,
+        "dataType" : "ListString"
+      } ],
+      "errorResponses" : [ {
+        "code" : 500,
+        "reason" : "Error obtiendo resumen de medidas"
+      }, {
+        "code" : 400,
+        "reason" : "Parámetros obligatorios no presentes"
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "DateParam" : {
+      "id" : "DateParam",
+      "properties" : {
+        "date" : {
+          "type" : "Date"
+        }
+      }
+    },
+    "Variable" : {
+      "id" : "Variable",
+      "properties" : {
+        "id" : {
+          "notes" : "Identificador",
+          "type" : "int"
+        },
+        "unit" : {
+          "notes" : "Unidad",
+          "type" : "string"
+        },
+        "smsDescription" : {
+          "notes" : "Nombre de la variable acortada para mostrar por SMS",
+          "type" : "string"
+        },
+        "name" : {
+          "notes" : "Nombre de la variable",
+          "type" : "string"
+        },
+        "filename" : {
+          "notes" : "Icono del avatar",
+          "type" : "string"
+        },
+        "code" : {
+          "notes" : "Código",
+          "type" : "string"
+        },
+        "calculated" : {
+          "notes" : "Es Calculada?",
+          "type" : "int"
+        },
+        "tooltip" : {
+          "notes" : "Texto auxiliar",
+          "type" : "string"
+        }
+      }
+    },
+    "Measure" : {
+      "id" : "Measure",
+      "properties" : {
+        "min" : {
+          "notes" : "Mínimo",
+          "type" : "double"
+        },
+        "max" : {
+          "notes" : "Máximo",
+          "type" : "double"
+        },
+        "value" : {
+          "notes" : "Valor",
+          "type" : "double"
+        },
+        "avg" : {
+          "notes" : "Promedio",
+          "type" : "double"
+        },
+        "date" : {
+          "notes" : "Fecha",
+          "type" : "Date"
+        },
+        "type" : {
+          "allowableValues" : {
+            "valueType" : "LIST",
+            "values" : [ "actual", "month", "anual", "last" ],
+            "valueType" : "LIST"
+          },
+          "notes" : "Tipo de la medida",
+          "type" : "string"
+        }
+      }
+    },
+    "MeasureResult" : {
+      "id" : "MeasureResult",
+      "properties" : {
+        "id" : {
+          "type" : "int"
+        },
+        "values" : {
+          "notes" : "Valor de la medida",
+          "items" : {
+            "$ref" : "Measure"
+          },
+          "type" : "Array"
+        },
+        "variable" : {
+          "notes" : "Variable medida",
+          "type" : "Variable"
+        }
+      }
+    },
+    "ListString" : {
+      "id" : "ListString",
+      "properties" : {
+        "list" : {
+          "items" : {
+            "$ref" : "T"
+          },
+          "type" : "Array"
+        }
+      }
+    },
+    "ActualMeasuresResult" : {
+      "id" : "ActualMeasuresResult",
+      "properties" : {
+        "lastUpdate" : {
+          "notes" : "Ultimas vez que la estación actualizó",
+          "type" : "int"
+        },
+        "entries" : {
+          "notes" : "Lista de Medidas",
+          "items" : {
+            "$ref" : "MeasureResult"
+          },
+          "type" : "Array"
+        }
+      }
+    }
+  }
+}

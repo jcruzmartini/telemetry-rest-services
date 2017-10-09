@@ -1,0 +1,122 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "resourcePath" : "/notifications",
+  "apis" : [ {
+    "path" : "/notifications/{id}/active",
+    "description" : "Operaciones relacionadas con notificaciones ",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene las notificaciones activas de una estación",
+      "responseClass" : "NotificationsResult",
+      "nickname" : "getActiveNotifications",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Id de la estación inválido"
+      }, {
+        "code" : 500,
+        "reason" : "Error obteniendo notificaciones activas"
+      } ]
+    } ]
+  }, {
+    "path" : "/notifications/{id}/today",
+    "description" : "Operaciones relacionadas con notificaciones ",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene las notificaciones diarias de una estación",
+      "responseClass" : "NotificationsResult",
+      "nickname" : "getTodayNotifications",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Id de la estación inválido"
+      }, {
+        "code" : 500,
+        "reason" : "Error obteniendo notificaciones diarias"
+      } ]
+    } ]
+  }, {
+    "path" : "/notifications/{id}/all",
+    "description" : "Operaciones relacionadas con notificaciones ",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene todas las notificaciones de una estación",
+      "responseClass" : "NotificationsResult",
+      "nickname" : "getAllNotifications",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Id de la estación inválido"
+      }, {
+        "code" : 500,
+        "reason" : "Error obteniendo notificaciones"
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "NotificationsResult" : {
+      "id" : "NotificationsResult",
+      "properties" : {
+        "entries" : {
+          "notes" : "Lista de Notificaciones",
+          "items" : {
+            "$ref" : "Notification"
+          },
+          "type" : "Array"
+        }
+      }
+    },
+    "Notification" : {
+      "id" : "Notification",
+      "properties" : {
+        "risk" : {
+          "notes" : "Riesgo asociado",
+          "type" : "string"
+        },
+        "startDate" : {
+          "notes" : "Fecha de comienzo",
+          "type" : "Date"
+        },
+        "description" : {
+          "notes" : "Descripción",
+          "type" : "string"
+        },
+        "value" : {
+          "notes" : "Valor de la notificación",
+          "type" : "double"
+        },
+        "endDate" : {
+          "notes" : "Fecha de Fin",
+          "type" : "Date"
+        },
+        "variable" : {
+          "notes" : "Nombre de la variable",
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

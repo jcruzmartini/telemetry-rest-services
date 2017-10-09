@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.NotificationMapper">
+	<cache flushInterval="800000"/>
+	<select id="getNotifications"  resultType="Notification">
+		select N.SHORT_DESCRIPTION as variable,
+		EN.START_DATE as startDate, EN.END_DATE as endDate, RDC.RISK risk, RDC.DESCRIPTION as
+		description, EN.VALUE as value from EVENT_NOTIFICATION EN, RISK_DESCRIPTION_COMMENT RDC,
+		NOTIFICATION N WHERE
+		EN.ID_RISK_DESCRIPTION_COMMENT = RDC.ID_RISK_DESCRIPTION_COMMENT AND N.ID_NOTIFICATION = RDC.ID_NOTIFICATION 
+		<choose>
+            <when test="type == 'ACTIVE'">
+                AND ISNULL(EN.END_DATE) 
+            </when>
+            <when test="type == 'TODAY'">
+                 AND DATE_FORMAT(EN.START_DATE,'%d%m%y') = DATE_FORMAT(NOW(),'%d%m%y') 
+            </when>
+        </choose>
+		AND EN.ID_STATION = #{idStation} ORDER BY START_DATE DESC;
+	</select>
+
+</mapper>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.GraphicsMapper">
+    <cache flushInterval="60000"/>
+	<resultMap id="GraphDataMap" type="GraphData">
+		<id property="code" column="code" />
+		<association property="variable" resultMap="com.techner.tau.services.mapper.MeasuresMapper.VariableMap" />
+		<association property="y" column="{cod=code,id=idStation}" select="selectYearData" />
+		<association property="m" column="{cod=code,id=idStation}" select="selectMonthData" />
+		<association property="w" column="{cod=code,id=idStation,initDate=iDate,endDate=eDate}" select="selectWeekData" />
+		<association property="d" column="{cod=code,id=idStation,initDate=iDate,endDate=eDate}" select="selectDayData" />
+	</resultMap>
+
+	<resultMap id="DataScaleMap" type="DataScale">
+		    <result column="dataValue" property="data"/>
+   		    <result column="scaleValue" property="scale"/>
+	</resultMap>
+
+	<select id="getEvolutionData" resultMap="GraphDataMap">
+		SELECT v.ID_VARIABLE as id, v.SHORT_DESCRIPTION as name, v.CODE as code, v.UNIT as unit, v.DESCRIPTION as tooltip, v.ICON_FILENAME as filename,  
+		#{idStation} as idStation, #{initDate} as iDate, #{endDate} as eDate		  
+		FROM VARIABLE v JOIN STATION_VARIABLE sv ON v.ID_VARIABLE = sv.ID_VARIABLE WHERE v.SHOW_FE = 1 AND sv.ENABLE = 1 AND sv.ID_STATION = #{idStation}
+		<if test="ids != null">
+			 AND CODE NOT IN
+	        <foreach item="idVar" index="index" collection="ids" open="(" separator="," close=")">
+	            #{idVar}
+	        </foreach>
+		</if>  
+	</select>
+
+	<select id="selectYearData" resultMap="DataScaleMap">
+		SELECT  #{cod} as code, DATEFORMATED as scaleValue, VALUE as dataValue FROM
+		(
+		      SELECT DATE_FORMAT(M.DATE,'%m/%Y') DATEFORMATED,DATE, ROUND(IF(V.ID_VARIABLE = 2,SUM(VALUE),AVG(VALUE)),2)
+		      VALUE FROM MEASURES M, VARIABLE V WHERE M.ID_VARIABLE = V.ID_VARIABLE AND V.CODE = #{cod} AND M.ID_STATION = #{id} 
+		      GROUP BY DATEFORMATED ORDER BY DATE DESC
+		) T ORDER BY	DATE;
+	</select>
+
+	<select id="selectMonthData"  resultMap="DataScaleMap">
+		SELECT  #{cod} as code, DATEFORMATED as scaleValue, VALUE as dataValue FROM
+		(
+		      SELECT DATE_FORMAT(DATE,'%d/%m') DATEFORMATED, ROUND(IF(V.ID_VARIABLE = 2,SUM(VALUE),AVG(VALUE)),2) VALUE, DATE FROM MEASURES M, VARIABLE V
+		      WHERE M.ID_VARIABLE = V.ID_VARIABLE AND V.CODE = #{cod} AND DATE BETWEEN DATE_SUB(NOW(),INTERVAL 30 DAY) AND NOW()  AND M.ID_STATION = #{id}
+		      GROUP BY DATEFORMATED ORDER BY DATE DESC
+		  ) T ORDER BY DATE;
+	</select>
+
+	<select id="selectWeekData"  resultMap="DataScaleMap">
+		SELECT #{cod} as code, DATEFORMATED as scaleValue, VALUE as dataValue FROM
+		(
+		      SELECT 
+		      <choose>
+			    <when test="endDate != null and initDate != null">
+			 		DATE_FORMAT(DATE,'%d/%m') DATEFORMATED,
+			    </when>
+			    <otherwise>
+			        DATE_FORMAT(DATE,'%W %d/%m') DATEFORMATED,
+			    </otherwise>
+			  </choose>
+		      ROUND(IF(V.ID_VARIABLE = 2,SUM(VALUE),AVG(VALUE)),2) VALUE, DATE FROM MEASURES M,
+		      VARIABLE V WHERE M.ID_VARIABLE = V.ID_VARIABLE AND V.CODE = #{cod} AND M.ID_STATION = #{id}
+		      <if test="endDate != null and initDate != null">
+		      	AND M.DATE BETWEEN #{initDate} AND #{endDate}
+		      </if>
+		      GROUP BY DATEFORMATED ORDER BY DATE 
+		      <if test="endDate == null or initDate == null">
+		      	DESC LIMIT 7
+		      </if>
+		) T ORDER BY DATE;
+	</select>
+
+
+	<select id="selectDayData"  resultMap="DataScaleMap">
+		SELECT #{cod} as code, DATEFORMATED as scaleValue, VALUE as dataValue FROM
+		(	
+		      SELECT 
+		      <choose>
+			    <when test="endDate != null and initDate != null">
+			 		DATE_FORMAT(DATE,'%e-%Hh') DATEFORMATED,
+			    </when>
+			    <otherwise>
+			        DATE_FORMAT(DATE,'%Hh') DATEFORMATED,
+			    </otherwise>
+			  </choose>
+		      DATE, ROUND(IF(V.ID_VARIABLE = 2,SUM(VALUE),AVG(VALUE)),2) VALUE FROM MEASURES M, VARIABLE V
+		      WHERE V.ID_VARIABLE = M.ID_VARIABLE AND V.CODE = #{cod} AND M.ID_STATION = #{id} 
+		      <if test="endDate != null and initDate != null">
+		      	AND M.DATE BETWEEN #{initDate} AND #{endDate}
+		      </if>
+		      GROUP BY DATE_FORMAT(DATE,'%d/%m/%Y %H:00') ORDER BY DATE 
+		      <if test="endDate == null or initDate == null">
+		      	DESC LIMIT 24
+		      </if>
+		) T ORDER BY DATE;
+	</select>
+
+</mapper>

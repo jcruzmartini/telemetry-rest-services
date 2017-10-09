@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.ReportMapper">
+	
+	<insert id="insertDailyReport" >
+		INSERT INTO STATION_PERIODICAL_NOTIFICATION(ID_STATION, HOUR,SMS_NOTIFICATION_ENABLE, EMAIL_NOTIFICATION_ENABLE,MONDAY,TUESDAY,
+		WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY) VALUES (#{idStation}, TIME(#{report.hour}), #{report.smsEnable}, #{report.emailEnable}, 
+		#{report.monday}, #{report.tuesday}, #{report.wednesday}, #{report.thursday},#{report.friday}, #{report.saturday}, #{report.sunday});    </insert>
+	
+	<update id="updateDailyReport">
+		UPDATE STATION_PERIODICAL_NOTIFICATION 
+		<set>
+		 	<if test="report.hour != null">HOUR= TIME(#{report.hour}),</if>
+		 	<if test="report.smsEnable != null">SMS_NOTIFICATION_ENABLE=#{report.smsEnable},</if>
+		 	<if test="report.emailEnable != null">EMAIL_NOTIFICATION_ENABLE=#{report.emailEnable},</if>
+		 	<if test="report.monday != null">MONDAY=#{report.monday},</if>
+		 	<if test="report.tuesday != null">TUESDAY=#{report.tuesday},</if>
+		 	<if test="report.wednesday != null">WEDNESDAY=#{report.wednesday},</if>
+		 	<if test="report.thursday != null">THURSDAY=#{report.thursday},</if>
+		 	<if test="report.friday != null">FRIDAY=#{report.friday},</if>	
+		 	<if test="report.saturday != null">SATURDAY=#{report.saturday},</if>	
+		 	<if test="report.sunday != null">SUNDAY=#{report.sunday},</if>	
+		</set>		
+		WHERE ID_STATION = #{idStation} AND ID_STATION_PERIODICAL_NOTIFICATION = #{report.id}
+	</update>
+	
+	<select id="getDailyReportInfo" parameterType="java.lang.Integer" resultType="DailyReport">
+		SELECT ID_STATION_PERIODICAL_NOTIFICATION as id, HOUR as hour, SMS_NOTIFICATION_ENABLE as smsEnable, EMAIL_NOTIFICATION_ENABLE as emailEnable, MONDAY, TUESDAY,
+		WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY FROM STATION_PERIODICAL_NOTIFICATION WHERE ID_STATION = #{idStation}; 
+	</select>
+	
+
+</mapper>

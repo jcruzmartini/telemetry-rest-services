@@ -1,0 +1,3117 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>API Document</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <!--<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href=" http://twitter.github.com/bootstrap/assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"/>
+
+    <script>
+        $(function () {
+                        $("#tabs111").tabs();
+                        $("#tabs121").tabs();
+                        $("#tabs131").tabs();
+                        $("#tabs141").tabs();
+                        $("#tabs151").tabs();
+                        $("#tabs161").tabs();
+
+                $("#accordion1api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs211").tabs();
+
+                $("#accordion2api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs311").tabs();
+                        $("#tabs321").tabs();
+                        $("#tabs331").tabs();
+
+                $("#accordion3api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs411").tabs();
+
+                $("#accordion4api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs511").tabs();
+
+                $("#accordion5api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs611").tabs();
+                        $("#tabs621").tabs();
+                        $("#tabs631").tabs();
+                        $("#tabs641").tabs();
+                        $("#tabs651").tabs();
+
+                $("#accordion6api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs711").tabs();
+                        $("#tabs721").tabs();
+                        $("#tabs731").tabs();
+
+                $("#accordion7api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs811").tabs();
+                        $("#tabs812").tabs();
+
+                $("#accordion8api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs911").tabs();
+                        $("#tabs921").tabs();
+                        $("#tabs931").tabs();
+
+                $("#accordion9api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+                        $("#tabs1011").tabs();
+                        $("#tabs1021").tabs();
+
+                $("#accordion10api").accordion({
+                    collapsible: true,
+                    active: false,
+                    header: "h5",
+                    heightStyle: "content"
+                });
+        });
+    </script>
+    <style type="text/css">
+        td, th {
+            padding: 2px 4px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        #notes {
+            position: absolute;
+            right: 10px;
+            top: 4px;
+            font-size: 9px;
+        }
+
+        #main_container {
+            position: relative;
+            width: 958px;
+        }
+    </style>
+</head>
+<body>
+<div id="main_container">
+    <h3>BasePath: http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services</h3>
+
+    <h3> Api Version: v1</h3>
+
+    <div id="api_container">
+        <h3>Resources</h3>
+            <h4>/alerts</h4>
+
+            <div class='content'>
+                Operaciones relacionadas con alertas
+
+
+                <div id="accordion1api">
+                            <h5><span style="font-weight: bold;">POST </span><span>/alerts/rules/{id}/new</span>
+
+                                <div id="notes">Inserta una nueva Regla</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs111">
+
+                                    <ul>
+                                        <li><a href="#tabs111-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs111-2">Response Body</a></li>
+                                        <li><a href="#tabs111-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs111-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs111-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>body</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>com.techner.tau.common.entity.ServiceRequest&lt;com.techner.tau.common.entity.AlertRule&gt;</td>
+                                                                <td>Información del usuario</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs111-2">
+                                        <p><a
+                                                href="#ServiceResult">ServiceResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs111-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetro obligatorio id vacío</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs111-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/alerts/events/{id}/active</span>
+
+                                <div id="notes">Obtiene los eventos de alertas activas para una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs121">
+
+                                    <ul>
+                                        <li><a href="#tabs121-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs121-2">Response Body</a></li>
+                                        <li><a href="#tabs121-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs121-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs121-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs121-2">
+                                        <p><a
+                                                href="#AlertsEventResult">AlertsEventResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs121-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Id de la estación inválido</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error buscando eventos de alertas activas</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs121-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/alerts/events/{id}/today</span>
+
+                                <div id="notes">Obtiene los eventos de alertas diarias para una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs131">
+
+                                    <ul>
+                                        <li><a href="#tabs131-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs131-2">Response Body</a></li>
+                                        <li><a href="#tabs131-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs131-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs131-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs131-2">
+                                        <p><a
+                                                href="#AlertsEventResult">AlertsEventResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs131-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Id de la estación inválido</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error buscando eventos de alertas diarias</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs131-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/alerts/events/{id}/all</span>
+
+                                <div id="notes">Obtiene todos los eventos de alertas para una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs141">
+
+                                    <ul>
+                                        <li><a href="#tabs141-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs141-2">Response Body</a></li>
+                                        <li><a href="#tabs141-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs141-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs141-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs141-2">
+                                        <p><a
+                                                href="#AlertsEventResult">AlertsEventResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs141-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Id de la estación inválido</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error buscando eventos de alertas</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs141-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/alerts/rules/{id}/all</span>
+
+                                <div id="notes">Obtiene todas reglas de alertas para una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs151">
+
+                                    <ul>
+                                        <li><a href="#tabs151-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs151-2">Response Body</a></li>
+                                        <li><a href="#tabs151-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs151-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs151-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs151-2">
+                                        <p><a
+                                                href="#AlertsRuleResult">AlertsRuleResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs151-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Id de la estación inválido</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error buscando reglas de alertas</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs151-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">PUT </span><span>/alerts/rules/{id}/update</span>
+
+                                <div id="notes">Actualiza una regla de alerta</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs161">
+
+                                    <ul>
+                                        <li><a href="#tabs161-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs161-2">Response Body</a></li>
+                                        <li><a href="#tabs161-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs161-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs161-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>body</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>com.techner.tau.common.entity.ServiceRequest&lt;com.techner.tau.common.entity.AlertRule&gt;</td>
+                                                                <td>Información del usuario</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs161-2">
+                                        <p><a
+                                                href="#ServiceResult">ServiceResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs161-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetro obligatorio id vacío</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs161-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/custom-queries</h4>
+
+            <div class='content'>
+                Consultas especiales
+
+
+                <div id="accordion2api">
+                            <h5><span style="font-weight: bold;">GET </span><span>/custom-queries/{id}/query</span>
+
+                                <div id="notes">Realiza calculos especiales dependiendo el tipo de query proporcionado</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs211">
+
+                                    <ul>
+                                        <li><a href="#tabs211-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs211-2">Response Body</a></li>
+                                        <li><a href="#tabs211-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs211-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs211-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>query</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>initDate</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>DateParam</td>
+                                                                <td>Fecha desde</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>endDate</th>
+                                                                <td>
+                                                                    optional</td>
+                                                                <td>DateParam</td>
+                                                                <td>Fecha hasta</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>type</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>string</td>
+                                                                <td>Tipo de consulta</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>param</th>
+                                                                <td>
+                                                                    optional</td>
+                                                                <td>string</td>
+                                                                <td>Parametro auxiliar de consulta</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs211-2">
+                                        <p><a
+                                                href="#QueryResult">QueryResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs211-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parametros inválidos</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error realizando calculos especiales</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs211-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/entity</h4>
+
+            <div class='content'>
+                Operaciones relacionadas con entidades
+
+
+                <div id="accordion3api">
+                            <h5><span style="font-weight: bold;">GET </span><span>/entity/{id}/variable/all</span>
+
+                                <div id="notes">Obtiene la información de las variables habilitadas para una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs311">
+
+                                    <ul>
+                                        <li><a href="#tabs311-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs311-2">Response Body</a></li>
+                                        <li><a href="#tabs311-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs311-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs311-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs311-2">
+                                        <p><a
+                                                href="#com.techner.tau.services.entity.EntityResult">com.techner.tau.services.entity.EntityResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs311-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error buscando información de las variables dadas de alta en el sistema</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs311-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/entity/alert/all</span>
+
+                                <div id="notes">Obtiene la información de todas las alertas en el sistema</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs321">
+
+                                    <ul>
+                                        <li><a href="#tabs321-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs321-2">Response Body</a></li>
+                                        <li><a href="#tabs321-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs321-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs321-1">
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs321-2">
+                                        <p><a
+                                                href="#com.techner.tau.services.entity.EntityResult">com.techner.tau.services.entity.EntityResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs321-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error buscando información de las variables dadas de alta en el sistema</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs321-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/entity/station/all</span>
+
+                                <div id="notes">Obtiene la información de todas las estaciones en el sistema</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs331">
+
+                                    <ul>
+                                        <li><a href="#tabs331-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs331-2">Response Body</a></li>
+                                        <li><a href="#tabs331-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs331-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs331-1">
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs331-2">
+                                        <p><a
+                                                href="#com.techner.tau.services.entity.EntityResult">com.techner.tau.services.entity.EntityResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs331-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error buscando información de las estaciones dadas de alta en el sistema</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs331-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/forecast</h4>
+
+            <div class='content'>
+                Servicios de Pronostico del tiempo
+
+
+                <div id="accordion4api">
+                            <h5><span style="font-weight: bold;">GET </span><span>/forecast/{latitude}/{longitude}</span>
+
+                                <div id="notes">Brinda pronóstico dependiendo posicion GPS</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs411">
+
+                                    <ul>
+                                        <li><a href="#tabs411-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs411-2">Response Body</a></li>
+                                        <li><a href="#tabs411-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs411-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs411-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>latitude</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>string</td>
+                                                                <td>Latitude</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>longitude</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>string</td>
+                                                                <td>Longitude</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs411-2">
+                                        <p><a
+                                                href="#ServiceResult">ServiceResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs411-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetros obligatorios latitude o longitude vacíos</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs411-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/graphics</h4>
+
+            <div class='content'>
+                Pone a disposición información para ser mostrada en gráficos 
+
+
+                <div id="accordion5api">
+                            <h5><span style="font-weight: bold;">GET </span><span>/graphics/{id}/evolution</span>
+
+                                <div id="notes">Obtiene la información para ser mostrada en el gráfico de evolución de las variables</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs511">
+
+                                    <ul>
+                                        <li><a href="#tabs511-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs511-2">Response Body</a></li>
+                                        <li><a href="#tabs511-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs511-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs511-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs511-2">
+                                        <p><a
+                                                href="#GraphDataResult">GraphDataResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs511-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Id de la estación inválido</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Información de la estación no encontrada</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs511-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/measures</h4>
+
+            <div class='content'>
+                Operaciones relacionadas con medidas obtenidas por las estaciones
+
+
+                <div id="accordion6api">
+                            <h5><span style="font-weight: bold;">GET </span><span>/measures/summary/monthly/{id}/{year}/{month}/{codes}</span>
+
+                                <div id="notes">Obtiene resumen MENSUAL para un mes especificado</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs611">
+
+                                    <ul>
+                                        <li><a href="#tabs611-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs611-2">Response Body</a></li>
+                                        <li><a href="#tabs611-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs611-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs611-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>month</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Mes a consultar</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>year</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Año a consultar</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>codes</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>ListString</td>
+                                                                <td>Lista de código de variables a consultar, separador [,]</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs611-2">
+                                        <p><a
+                                                href="#ActualMeasuresResult">ActualMeasuresResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs611-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obtiendo resumen de medidas</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetros obligatorios no presentes</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs611-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/measures/{id}/historical</span>
+
+                                <div id="notes">Obtiene las medidas HISTORICAS</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs621">
+
+                                    <ul>
+                                        <li><a href="#tabs621-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs621-2">Response Body</a></li>
+                                        <li><a href="#tabs621-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs621-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs621-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>query</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>initDate</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>DateParam</td>
+                                                                <td>Fecha desde</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>endDate</th>
+                                                                <td>
+                                                                    optional</td>
+                                                                <td>DateParam</td>
+                                                                <td>Fecha hasta</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>codes</th>
+                                                                <td>
+                                                                    optional</td>
+                                                                <td>ListString</td>
+                                                                <td>Lista de codigo de variables a consultar, separador [,]</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs621-2">
+                                        <p><a
+                                                href="#ActualMeasuresResult">ActualMeasuresResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs621-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetros inválidos</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obtiendo medidas historicas</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs621-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/measures/{id}/actual</span>
+
+                                <div id="notes">Obtiene las medidas ACTUALES</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs631">
+
+                                    <ul>
+                                        <li><a href="#tabs631-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs631-2">Response Body</a></li>
+                                        <li><a href="#tabs631-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs631-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs631-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs631-2">
+                                        <p><a
+                                                href="#ActualMeasuresResult">ActualMeasuresResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs631-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obtiendo medidas actuales</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs631-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/measures/{id}/summary</span>
+
+                                <div id="notes">Obtiene resumen DIARIO, MENSUAL y ANUAL</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs641">
+
+                                    <ul>
+                                        <li><a href="#tabs641-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs641-2">Response Body</a></li>
+                                        <li><a href="#tabs641-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs641-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs641-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs641-2">
+                                        <p><a
+                                                href="#ActualMeasuresResult">ActualMeasuresResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs641-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obtiendo resumen de medidas</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs641-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/measures/summary/daily/{id}/{year}/{month}/{day}/{codes}</span>
+
+                                <div id="notes">Obtiene resumen DIARIO para un día especificado</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs651">
+
+                                    <ul>
+                                        <li><a href="#tabs651-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs651-2">Response Body</a></li>
+                                        <li><a href="#tabs651-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs651-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs651-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>day</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Día a consultar</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>month</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Mes a consultar</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>year</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Año a consultar</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>codes</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>ListString</td>
+                                                                <td>Lista de código de variables a consultar, separador [,]</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs651-2">
+                                        <p><a
+                                                href="#ActualMeasuresResult">ActualMeasuresResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs651-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obtiendo resumen de medidas</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetros obligatorios no presentes</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs651-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/notifications</h4>
+
+            <div class='content'>
+                Operaciones relacionadas con notificaciones 
+
+
+                <div id="accordion7api">
+                            <h5><span style="font-weight: bold;">GET </span><span>/notifications/{id}/active</span>
+
+                                <div id="notes">Obtiene las notificaciones activas de una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs711">
+
+                                    <ul>
+                                        <li><a href="#tabs711-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs711-2">Response Body</a></li>
+                                        <li><a href="#tabs711-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs711-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs711-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs711-2">
+                                        <p><a
+                                                href="#NotificationsResult">NotificationsResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs711-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Id de la estación inválido</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obteniendo notificaciones activas</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs711-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/notifications/{id}/today</span>
+
+                                <div id="notes">Obtiene las notificaciones diarias de una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs721">
+
+                                    <ul>
+                                        <li><a href="#tabs721-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs721-2">Response Body</a></li>
+                                        <li><a href="#tabs721-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs721-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs721-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs721-2">
+                                        <p><a
+                                                href="#NotificationsResult">NotificationsResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs721-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Id de la estación inválido</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obteniendo notificaciones diarias</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs721-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/notifications/{id}/all</span>
+
+                                <div id="notes">Obtiene todas las notificaciones de una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs731">
+
+                                    <ul>
+                                        <li><a href="#tabs731-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs731-2">Response Body</a></li>
+                                        <li><a href="#tabs731-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs731-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs731-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs731-2">
+                                        <p><a
+                                                href="#NotificationsResult">NotificationsResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs731-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Id de la estación inválido</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obteniendo notificaciones</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs731-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/reports</h4>
+
+            <div class='content'>
+                Operaciones relacionadas con reportes 
+
+
+                <div id="accordion8api">
+                            <h5><span style="font-weight: bold;">POST </span><span>/reports/{id}/daily</span>
+
+                                <div id="notes">Crea o actualiza reporte diario</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs811">
+
+                                    <ul>
+                                        <li><a href="#tabs811-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs811-2">Response Body</a></li>
+                                        <li><a href="#tabs811-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs811-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs811-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>body</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>com.techner.tau.common.entity.ServiceRequest&lt;com.techner.tau.common.entity.DailyReport&gt;</td>
+                                                                <td>Información del reporte</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs811-2">
+                                        <p><a
+                                                href="#ServiceResult">ServiceResult</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs811-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetros obligatorios email o password vacíos</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs811-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/reports/{id}/daily</span>
+
+                                <div id="notes">Obtiene info del reporte diario</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs812">
+
+                                    <ul>
+                                        <li><a href="#tabs812-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs812-2">Response Body</a></li>
+                                        <li><a href="#tabs812-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs812-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs812-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs812-2">
+                                        <p><a
+                                                href="#DailyReport">DailyReport</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs812-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetros obligatorios email o password vacíos</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs812-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/stations</h4>
+
+            <div class='content'>
+                Operaciones relacionadas con estaciones 
+
+
+                <div id="accordion9api">
+                            <h5><span style="font-weight: bold;">PUT </span><span>/stations</span>
+
+                                <div id="notes">Realiza el update de un usuario</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs911">
+
+                                    <ul>
+                                        <li><a href="#tabs911-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs911-2">Response Body</a></li>
+                                        <li><a href="#tabs911-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs911-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs911-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>body</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>com.techner.tau.common.entity.ServiceRequest&lt;com.techner.tau.common.entity.StationInfo&gt;</td>
+                                                                <td>Información de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs911-2">
+                                        <p><a
+                                                href="#StationInfo">StationInfo</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs911-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetro id de la estación vacío</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs911-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/stations/{id}/info</span>
+
+                                <div id="notes">Obtiene la información de una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs921">
+
+                                    <ul>
+                                        <li><a href="#tabs921-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs921-2">Response Body</a></li>
+                                        <li><a href="#tabs921-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs921-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs921-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>path</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th>id</th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>int</td>
+                                                                <td>Id de la estación</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs921-2">
+                                        <p><a
+                                                href="#StationInfo">StationInfo</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs921-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Id de la estación inválido</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obteniendo información de la estación</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs921-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">GET </span><span>/stations/monitoring</span>
+
+                                <div id="notes">Obtiene la información de monitoreo de las estaciones</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs931">
+
+                                    <ul>
+                                        <li><a href="#tabs931-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs931-2">Response Body</a></li>
+                                        <li><a href="#tabs931-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs931-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs931-1">
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs931-2">
+                                        <p><a
+                                                href="#StationInfo">StationInfo</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs931-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>500</td>
+                                                    <td>Error obteniendo información de la estación</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs931-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <h4>/users</h4>
+
+            <div class='content'>
+                Operaciones relacionadas con usuarios 
+
+
+                <div id="accordion10api">
+                            <h5><span style="font-weight: bold;">PUT </span><span>/users</span>
+
+                                <div id="notes">Realiza el update de una estación</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs1011">
+
+                                    <ul>
+                                        <li><a href="#tabs1011-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs1011-2">Response Body</a></li>
+                                        <li><a href="#tabs1011-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs1011-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs1011-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>body</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>com.techner.tau.common.entity.ServiceRequest&lt;com.techner.tau.common.entity.User&gt;</td>
+                                                                <td>Información del usuario</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs1011-2">
+                                        <p><a
+                                                href="#User">User</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs1011-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetro obligatorio id vacío</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs1011-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5><span style="font-weight: bold;">POST </span><span>/users/login</span>
+
+                                <div id="notes">Realiza login de un usuario</div>
+                            </h5>
+                            <div>
+                                <p></p>
+
+                                <div id="tabs1021">
+
+                                    <ul>
+                                        <li><a href="#tabs1021-1">Request Parameters</a>
+                                        </li>
+                                        <li><a href="#tabs1021-2">Response Body</a></li>
+                                        <li><a href="#tabs1021-3">Response Status Codes</a>
+                                        </li>
+                                        <li><a href="#tabs1021-4">Examples</a>
+                                        </li>
+                                    </ul>
+                                    <div id="tabs1021-1">
+                                        <ul>
+                                                <li>
+                                                    <h7>body</h7>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Required</th>
+                                                            <th>Data Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>required
+                                                                    </td>
+                                                                <td>com.techner.tau.common.entity.ServiceRequest&lt;com.techner.tau.common.entity.User&gt;</td>
+                                                                <td>Información del usuario</td>
+                                                            </tr>
+                                                    </table>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tabs1021-2">
+                                        <p><a
+                                                href="#User">User</a>
+                                            
+                                        </p>
+                                    </div>
+                                    <div id="tabs1021-3">
+                                        <table>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Reason</th>
+                                            </tr>
+                                                <tr>
+                                                    <td>400</td>
+                                                    <td>Parámetros obligatorios email o password vacíos</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                    <div id="tabs1021-4">
+                                        <p>
+                                           No Samples
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+    </div>
+    <h3>Data Types</h3>
+        <h4><a name="ServiceResult">ServiceResult</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>result</th>
+                        <td><a href="#T">T</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Objeto Resultado de la llamada</td>
+                    </tr>
+                    <tr>
+                        <th>success</th>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Resultado de la llamada</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="AlertsEventResult">AlertsEventResult</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>entries</th>
+                        <td><a href="#AlertEvent">Array[AlertEvent]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td>entries</td>
+                        <td>Lista de eventos de alertas</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="AlertEvent">AlertEvent</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>id</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>startDate</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>startDate</td>
+                        <td>Fecha de la alerta</td>
+                    </tr>
+                    <tr>
+                        <th>lastUpdate</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>lastUpdate</td>
+                        <td>Ultima actualización de la alerta</td>
+                    </tr>
+                    <tr>
+                        <th>rule</th>
+                        <td><a href="#AlertRule">AlertRule</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td>rule</td>
+                        <td>Regla de la alerta</td>
+                    </tr>
+                    <tr>
+                        <th>value</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>value</td>
+                        <td>Valor de la alerta</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="AlertRule">AlertRule</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>id</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>id</td>
+                        <td>Id</td>
+                    </tr>
+                    <tr>
+                        <th>startDate</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>startDate</td>
+                        <td>Fecha de la alerta</td>
+                    </tr>
+                    <tr>
+                        <th>emailEnable</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>emailEnable</td>
+                        <td>Notificación por Email</td>
+                    </tr>
+                    <tr>
+                        <th>smsEnable</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>smsEnable</td>
+                        <td>Notificación por sms</td>
+                    </tr>
+                    <tr>
+                        <th>alert</th>
+                        <td><a href="#Alert">Alert</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td>alert</td>
+                        <td>Alerta</td>
+                    </tr>
+                    <tr>
+                        <th>endDate</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>endDate</td>
+                        <td>Fecha Fin de la alerta</td>
+                    </tr>
+                    <tr>
+                        <th>high</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>high</td>
+                        <td>Umbral máximo</td>
+                    </tr>
+                    <tr>
+                        <th>low</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>low</td>
+                        <td>Umbral mínimo</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="Alert">Alert</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>id</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>id</td>
+                        <td>Id</td>
+                    </tr>
+                    <tr>
+                        <th>description</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>description</td>
+                        <td>Descripción</td>
+                    </tr>
+                    <tr>
+                        <th>code</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>code</td>
+                        <td>Código</td>
+                    </tr>
+                    <tr>
+                        <th>variable</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>variable</td>
+                        <td>Variable involucrada</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="AlertsRuleResult">AlertsRuleResult</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>entries</th>
+                        <td><a href="#AlertRule">Array[AlertRule]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td>entries</td>
+                        <td>Lista de reglas de alertas</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="DateParam">DateParam</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>date</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="QueryResult">QueryResult</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>value</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>value</td>
+                        <td>Resultado de la query</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="Variable">Variable</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>id</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Identificador</td>
+                    </tr>
+                    <tr>
+                        <th>unit</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Unidad</td>
+                    </tr>
+                    <tr>
+                        <th>smsDescription</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Nombre de la variable acortada para mostrar por SMS</td>
+                    </tr>
+                    <tr>
+                        <th>name</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Nombre de la variable</td>
+                    </tr>
+                    <tr>
+                        <th>filename</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Icono del avatar</td>
+                    </tr>
+                    <tr>
+                        <th>code</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Código</td>
+                    </tr>
+                    <tr>
+                        <th>calculated</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Es Calculada?</td>
+                    </tr>
+                    <tr>
+                        <th>tooltip</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Texto auxiliar</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="StationInfo">StationInfo</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>id</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>location</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Ubicación textual</td>
+                    </tr>
+                    <tr>
+                        <th>altitude</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Altitude del lugar donde esta ubicada la estacion</td>
+                    </tr>
+                    <tr>
+                        <th>sunset</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Hora de puesta del sol</td>
+                    </tr>
+                    <tr>
+                        <th>is_default</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Estación por defecto</td>
+                    </tr>
+                    <tr>
+                        <th>longitude</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Longitude para ubicación GPS</td>
+                    </tr>
+                    <tr>
+                        <th>sunrise</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Hora de salida del sol</td>
+                    </tr>
+                    <tr>
+                        <th>latitude</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Latitude para ubicación GPS</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="GraphDataResult">GraphDataResult</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>entries</th>
+                        <td><a href="#GraphData">Array[GraphData]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Lista de variables a graficar</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="GraphData">GraphData</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>w</th>
+                        <td><a href="#DataScale">Array[DataScale]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Información semanal</td>
+                    </tr>
+                    <tr>
+                        <th>d</th>
+                        <td><a href="#DataScale">Array[DataScale]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Información día</td>
+                    </tr>
+                    <tr>
+                        <th>m</th>
+                        <td><a href="#DataScale">Array[DataScale]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Información mensual</td>
+                    </tr>
+                    <tr>
+                        <th>code</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>variable</th>
+                        <td><a href="#Variable">Variable</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Variable</td>
+                    </tr>
+                    <tr>
+                        <th>y</th>
+                        <td><a href="#DataScale">Array[DataScale]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Información anual</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="DataScale">DataScale</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>scale</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>data</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="ListString">ListString</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>list</th>
+                        <td><a href="#T">Array[T]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="ActualMeasuresResult">ActualMeasuresResult</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>lastUpdate</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Ultimas vez que la estación actualizó</td>
+                    </tr>
+                    <tr>
+                        <th>entries</th>
+                        <td><a href="#MeasureResult">Array[MeasureResult]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Lista de Medidas</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="MeasureResult">MeasureResult</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>id</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>values</th>
+                        <td><a href="#Measure">Array[Measure]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Valor de la medida</td>
+                    </tr>
+                    <tr>
+                        <th>variable</th>
+                        <td><a href="#Variable">Variable</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Variable medida</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="Measure">Measure</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>min</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Mínimo</td>
+                    </tr>
+                    <tr>
+                        <th>max</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Máximo</td>
+                    </tr>
+                    <tr>
+                        <th>value</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Valor</td>
+                    </tr>
+                    <tr>
+                        <th>avg</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Promedio</td>
+                    </tr>
+                    <tr>
+                        <th>date</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Fecha</td>
+                    </tr>
+                    <tr>
+                        <th>type</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Tipo de la medida</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="NotificationsResult">NotificationsResult</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>entries</th>
+                        <td><a href="#Notification">Array[Notification]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Lista de Notificaciones</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="Notification">Notification</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>risk</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Riesgo asociado</td>
+                    </tr>
+                    <tr>
+                        <th>startDate</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Fecha de comienzo</td>
+                    </tr>
+                    <tr>
+                        <th>description</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Descripción</td>
+                    </tr>
+                    <tr>
+                        <th>value</th>
+                        <td>double</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Valor de la notificación</td>
+                    </tr>
+                    <tr>
+                        <th>endDate</th>
+                        <td>Date</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Fecha de Fin</td>
+                    </tr>
+                    <tr>
+                        <th>variable</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td>Nombre de la variable</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="DailyReport">DailyReport</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>id</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>id</td>
+                        <td>Id</td>
+                    </tr>
+                    <tr>
+                        <th>wednesday</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>wednesday</td>
+                        <td>Miercoles</td>
+                    </tr>
+                    <tr>
+                        <th>emailEnable</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>emailEnable</td>
+                        <td>Notificación por Email</td>
+                    </tr>
+                    <tr>
+                        <th>smsEnable</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>smsEnable</td>
+                        <td>Notificación por sms</td>
+                    </tr>
+                    <tr>
+                        <th>thursday</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>thursday</td>
+                        <td>Jueves</td>
+                    </tr>
+                    <tr>
+                        <th>monday</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>monday</td>
+                        <td>Lunes</td>
+                    </tr>
+                    <tr>
+                        <th>sunday</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>sunday</td>
+                        <td>Domingo</td>
+                    </tr>
+                    <tr>
+                        <th>saturday</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>saturday</td>
+                        <td>Sábado</td>
+                    </tr>
+                    <tr>
+                        <th>hour</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>hour</td>
+                        <td>Horario a ser enviado, Formato: [hh:mm]</td>
+                    </tr>
+                    <tr>
+                        <th>friday</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>friday</td>
+                        <td>Viernes</td>
+                    </tr>
+                    <tr>
+                        <th>tuesday</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td>tuesday</td>
+                        <td>Martes</td>
+                    </tr>
+            </table>
+        </div>
+        <h4><a name="User">User</a></h4>
+
+        <div>
+            <table>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Access</th>
+                <th>Schema</th>
+                <th>Notes</th>
+                    <tr>
+                        <th>id</th>
+                        <td>int</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>stations</th>
+                        <td><a href="#StationInfo">Array[StationInfo]</a></td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>token</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>email</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>is_active</th>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>name</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>lastname</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>password</th>
+                        <td>string</td>
+                        <td>false</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+            </table>
+        </div>
+</div>
+</body>
+</html>

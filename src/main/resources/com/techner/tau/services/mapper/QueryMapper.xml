@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.QueryMapper">
+	<cache flushInterval="800000"/>
+	<select id="calculateQuery" resultType="QueryResult">
+		<choose>
+			<when test="type == 'grados-dia'">
+				SELECT IFNULL(ROUND(SUM(VALUE),2),0) as value FROM(SELECT IF((((MAX(M.VALUE)+MIN(M.VALUE))/2)-#{param})>0,
+				(((MAX(M.VALUE)+MIN(M.VALUE))/2)-#{param}),0) VALUE,	DATE_FORMAT(M.DATE, '%d/%m/%Y') DATE2	
+				FROM MEASURES M JOIN VARIABLE V ON M.ID_VARIABLE = V.ID_VARIABLE WHERE V.CODE = 'T' AND M.ID_STATION = #{idStation} 
+				AND M.DATE BETWEEN #{initDate}
+				<if test="endDate != null">
+					AND #{endDate}
+				</if>
+				<if test="endDate == null">
+					AND NOW()
+				</if>
+				GROUP BY DATE2) T;
+			</when>
+			<when test="type == 'lluvia-acumulada' or type == 'evapotranspiration'">
+				SELECT IFNULL(ROUND(SUM(VALUE),2),0) as value FROM MEASURES M JOIN VARIABLE V ON M.ID_VARIABLE = V.ID_VARIABLE WHERE 
+				<choose>
+					<when test="type == 'lluvia-acumulada'">
+						V.CODE = 'L'
+				    </when>
+					<when test="type == 'evapotranspiration'">
+						V.CODE = 'E'
+				    </when>
+			    </choose>
+				AND M.ID_STATION = #{idStation} AND M.DATE BETWEEN #{initDate}
+				<if test="endDate != null">
+					AND #{endDate}
+				</if>
+				<if test="endDate == null">
+					AND NOW()
+				</if>
+			</when>
+			<when test="type == 'horas-frio'">
+				SELECT COUNT(*) as value FROM ( SELECT AVG(M.VALUE) as TEMP, DATE_FORMAT(M.DATE,'%d-%m-%Y %k') as HOUR FROM MEASURES M JOIN VARIABLE V ON
+				M.ID_VARIABLE = V.ID_VARIABLE WHERE V.CODE = 'T' AND M.ID_STATION = #{idStation} AND M.DATE BETWEEN	#{initDate}
+				<if test="endDate != null">
+					AND #{endDate}
+				</if>
+				<if test="endDate == null">
+					AND NOW()
+				</if>
+				<![CDATA[
+				GROUP BY HOUR ORDER BY HOUR DESC) as T WHERE TEMP  <= #{param};
+                 ]]>
+			</when>
+			<when test="type == 'horas-luz'">
+				SELECT IFNULL(ROUND(SUM(TIMESTAMPDIFF(MINUTE, SUNRISE, SUNSET)/60),2),0) as value from SUNRISE_SUNSET_INFORMATION SSI, STATION S WHERE
+				SSI.ID_STATION_INFORMATION = S.ID_STATION_INFORMATION AND S.ID_STATION = #{idStation} AND DATE BETWEEN #{initDate}
+				<if test="endDate != null">
+					AND #{endDate};
+				</if>
+				<if test="endDate == null">
+					AND NOW();
+				</if>
+			</when>
+		</choose>
+	</select>
+</mapper>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.techner.tau.services.mapper.MeasuresMapper">
+	<cache flushInterval="60000"/>
+	<resultMap id="MeasureResultMap" type="MeasureResult">
+	    <id property="id" column="v_id" />
+		<association property="variable" resultMap="VariableMap" columnPrefix="v_"/>
+		<collection property="values" ofType="Measure"  javaType="ArrayList" resultMap="MeasureMap" columnPrefix="m_"/>
+	</resultMap>
+	
+	<resultMap id="VariableMap" type="Variable">
+	    <id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="tooltip" column="tooltip" />
+		<result property="filename" column="filename" />
+		<result property="unit" column="unit" />
+		<result property="code" column="code" />
+		<result property="smsDescription" column="smsDescription" />
+		<result property="calculated" column="calculated" />
+	</resultMap>
+
+	<resultMap id="MeasureMap" type="Measure">
+		<result property="date" column="date" />
+		<result property="type" column="type" />
+		<result property="max" column="max" />
+		<result property="min" column="min" />
+		<result property="avg" column="avg" />
+		<result property="value" column="value" />
+	</resultMap>
+
+	<select id="getAcumVariable" parameterType="Integer" resultMap="MeasureResultMap">
+	SELECT IF(M.DATELOCO IS NOT NULL,#{type},NULL) as m_type, V.SMS_DESCRIPTION as v_smsDescription, V.SHORT_DESCRIPTION as v_name, V.CODE as v_code, V.DESCRIPTION as v_tooltip, 
+	V.ICON_FILENAME as v_filename, V.UNIT as v_unit, V.ID_VARIABLE as v_id, ROUND(MAX(M.TOTAL),1) as m_max, ROUND(AVG(M.TOTAL),1) as m_avg ,
+	ROUND(SUM(M.TOTAL),2) as m_value FROM VARIABLE V LEFT JOIN ( SELECT SUM(VALUE) as TOTAL, DATE_FORMAT(M1.DATE,'%d%m%Y') as DATELOCO, M1.ID_VARIABLE
+	FROM MEASURES M1 WHERE M1.ID_STATION = #{idStation} 
+	    <choose>
+	    	<when test="type == 'last'">
+ 				AND DATE_FORMAT(M1.DATE,'%d/%m/%Y') = (SELECT DATE_FORMAT(DATE,'%d/%m/%Y') 
+		        FROM MEASURES WHERE ID_STATION = #{idStation} ORDER BY ID_MEASURE DESC LIMIT 1)
+			</when>
+			<when test="type == 'actual'">
+				AND DATE_FORMAT(M1.DATE,'%d/%m/%Y') = DATE_FORMAT(NOW(),'%d/%m/%Y')
+			</when>
+			<when test="type == 'acum_24'">
+				AND M1.DATE BETWEEN DATE_SUB(NOW(), INTERVAL 24 HOUR) AND NOW()
+			</when>
+			<when test="type == 'acum_week'">
+				AND M1.DATE BETWEEN DATE_SUB(NOW(), INTERVAL 1 WEEK) AND NOW()
+			</when>
+			<when test="type == 'month'">
+				AND DATE_FORMAT(M1.DATE, '%m/%Y') = DATE_FORMAT(NOW(), '%m/%Y')
+			</when>
+			<otherwise>
+				AND DATE_FORMAT(M1.DATE, '%Y') = DATE_FORMAT(NOW(), '%Y')
+			</otherwise>
+		</choose>
+	    GROUP BY M1.ID_VARIABLE, DATELOCO) M ON V.ID_VARIABLE = M.ID_VARIABLE WHERE V.CODE = #{code};
+	</select>
+	
+	<select id="getEnableVariables" parameterType="Integer" resultType="String">
+		SELECT V.CODE FROM STATION_VARIABLE SV LEFT JOIN VARIABLE V ON SV.ID_VARIABLE = V.ID_VARIABLE WHERE ID_STATION = #{value} AND SV.ENABLE = 1;
+	</select>
+
+	<select id="getMeasures" resultMap="MeasureResultMap">
+		SELECT IF(M.calculated IS NOT NULL,#{type},NULL) as m_type, V.SHORT_DESCRIPTION as v_name, V.DESCRIPTION as
+		v_tooltip, V.ICON_FILENAME as v_filename, V.CODE as v_code, V.UNIT as v_unit, V.ID_VARIABLE as v_id, V.SMS_DESCRIPTION as v_smsDescription, M.max as m_max,
+		M.min as m_min, M.avg as m_avg, M.actual as m_value, M.calculated as v_calculated FROM VARIABLE V LEFT JOIN (SELECT M1.ID_VARIABLE id_variable,  M1.IS_CALCULATED as calculated, 
+		ROUND(MAX(M1.VALUE),2) max,	ROUND(MIN(M1.VALUE),2) min, ROUND(AVG(M1.VALUE),2) avg 
+		<choose>
+			<when test="type == 'last' or type == 'actual'">
+				, ROUND((SELECT ROUND(M2.VALUE,2) FROM MEASURES M2 WHERE M2.ID_STATION = #{idStation} AND M1.ID_VARIABLE = M2.ID_VARIABLE ORDER BY M2.DATE 
+				DESC LIMIT 1),2) actual 
+			</when>
+			<otherwise>
+				, NULL as actual		    
+			</otherwise>
+		</choose>
+		FROM MEASURES M1 WHERE M1.ID_STATION = #{idStation} 
+		<choose>
+		    <when test="type == 'last'">
+		        AND DATE_FORMAT(M1.DATE,'%d/%m/%Y') = (SELECT DATE_FORMAT(DATE,'%d/%m/%Y') 
+		        FROM MEASURES WHERE ID_STATION = #{idStation} ORDER BY ID_MEASURE DESC LIMIT 1)
+			</when>
+			<when test="type == 'actual'">
+				AND DATE_FORMAT(M1.DATE,'%d/%m/%Y') = DATE_FORMAT(NOW(),'%d/%m/%Y')
+			</when>
+			<when test="type == 'month'">
+				AND DATE_FORMAT(DATE, '%m/%Y') = DATE_FORMAT(NOW(), '%m/%Y')
+			</when>
+			<otherwise>
+				AND DATE_FORMAT(DATE, '%Y') = DATE_FORMAT(NOW(), '%Y')
+			</otherwise>
+		</choose>
+		GROUP BY M1.ID_VARIABLE) M ON V.ID_VARIABLE = M.ID_VARIABLE WHERE V.SHOW_FE = 1 
+		<if test="varCodes != null">
+			AND V.CODE IN
+			<foreach item="code" index="index" collection="varCodes" open="(" separator="," close=")">
+				#{code}
+			</foreach>
+		</if>
+		<if test="exVarCodes != null">
+			AND V.CODE NOT IN
+			<foreach item="code" index="index" collection="exVarCodes" open="(" separator="," close=")">
+				#{code}
+			</foreach>
+		</if>
+	</select>
+	
+	<select id="getMeasuresByDate" resultMap="MeasureResultMap">
+		SELECT #{type} as m_type, V.SHORT_DESCRIPTION as v_name, V.DESCRIPTION as v_tooltip, V.ICON_FILENAME as v_filename, V.UNIT as v_unit, V.CODE as v_code,
+		M.id_variable as v_id, V.SMS_DESCRIPTION as v_smsDescription, M.max as m_max, M.min as m_min, M.avg as m_avg, M.calculated as v_calculated 
+		FROM (SELECT M1.ID_VARIABLE id_variable, M1.IS_CALCULATED as calculated, ROUND(MAX(M1.VALUE),2) max, ROUND(MIN(M1.VALUE),2) min, ROUND(AVG(M1.VALUE),2) avg	
+		FROM MEASURES M1 WHERE M1.ID_STATION = #{idStation} 
+		<choose>
+			<when test="type == 'actual'">
+				AND DATE_FORMAT(M1.DATE,'%d/%m/%Y') = DATE_FORMAT(#{date},'%d/%m/%Y')
+			</when>
+			<when test="type == 'month'">
+				AND DATE_FORMAT(DATE, '%m/%Y') = DATE_FORMAT(#{date}, '%m/%Y')
+			</when>
+			<otherwise>
+				AND DATE_FORMAT(DATE, '%Y') = DATE_FORMAT(#{date}, '%Y')
+			</otherwise>
+		</choose>
+		GROUP BY M1.ID_VARIABLE) M, VARIABLE V WHERE V.SHOW_FE = 1 AND M.id_variable = V.ID_VARIABLE 
+		<if test="varCodes != null">
+			AND V.CODE IN
+			<foreach item="code" index="index" collection="varCodes" open="(" separator="," close=")">
+				#{code}
+			</foreach>
+		</if>
+	</select>
+	
+	<select id="getLastUpdate" parameterType="java.lang.Integer" resultType="int">
+		select ROUND((UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(DATE))/60,0) ultact from MEASURES WHERE MEASURES.ID_STATION = #{value} ORDER BY DATE DESC
+		LIMIT 1
+	</select>
+
+	<select id="getHistoricalData" resultMap="MeasureResultMap">
+		SELECT  V.SHORT_DESCRIPTION as v_name, V.DESCRIPTION as v_tooltip, V.ICON_FILENAME as v_filename, V.UNIT as v_unit,  V.CODE as v_code, V.ID_VARIABLE as v_id, 
+		V.SMS_DESCRIPTION as v_smsDescription, STR_TO_DATE(DATE_FORMAT(M.date ,'%d-%m-%Y %H:00:00'),'%d-%m-%Y %H:%i:%s') as m_date, IF(V.CODE = 'L',ROUND(SUM(M.VALUE),2), 
+		ROUND(AVG(M.VALUE),2))  as m_value, M.ID_MEASURE as m_id, M.IS_CALCULATED as v_calculated FROM VARIABLE V LEFT JOIN MEASURES M ON V.ID_VARIABLE = M.ID_VARIABLE
+		WHERE V.SHOW_FE = 1
+		<if test="varCodes != null">
+			AND V.CODE IN
+			<foreach item="code" index="index" collection="varCodes" open="(" separator="," close=")">
+				#{code}
+			</foreach>
+		</if>
+		<if test="dateIni != null">
+			AND M.DATE BETWEEN #{dateIni}
+			<if test="dateEnd == null">
+				AND NOW()
+			</if>
+		</if>
+		<if test="dateEnd != null">
+			AND #{dateEnd}
+		</if>
+		AND M.ID_STATION = #{idStation} GROUP BY m_date, v_id ORDER BY M.DATE DESC;
+	</select>
+</mapper>

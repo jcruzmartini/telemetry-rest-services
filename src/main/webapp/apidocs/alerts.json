@@ -1,0 +1,296 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.1",
+  "basePath" : "http://ec2-54-213-29-133.us-west-2.compute.amazonaws.com/tau-services",
+  "resourcePath" : "/alerts",
+  "apis" : [ {
+    "path" : "/alerts/rules/{id}/new",
+    "description" : "Operaciones relacionadas con alertas",
+    "operations" : [ {
+      "httpMethod" : "POST",
+      "summary" : "Inserta una nueva Regla",
+      "responseClass" : "ServiceResult",
+      "nickname" : "newRule",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "description" : "Información del usuario",
+        "paramType" : "body",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "com.techner.tau.common.entity.ServiceRequest<com.techner.tau.common.entity.AlertRule>"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Parámetro obligatorio id vacío"
+      } ]
+    } ]
+  }, {
+    "path" : "/alerts/events/{id}/active",
+    "description" : "Operaciones relacionadas con alertas",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene los eventos de alertas activas para una estación",
+      "responseClass" : "AlertsEventResult",
+      "nickname" : "getActiveAlertEvents",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Id de la estación inválido"
+      }, {
+        "code" : 500,
+        "reason" : "Error buscando eventos de alertas activas"
+      } ]
+    } ]
+  }, {
+    "path" : "/alerts/events/{id}/today",
+    "description" : "Operaciones relacionadas con alertas",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene los eventos de alertas diarias para una estación",
+      "responseClass" : "AlertsEventResult",
+      "nickname" : "getTodayAlertEvents",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Id de la estación inválido"
+      }, {
+        "code" : 500,
+        "reason" : "Error buscando eventos de alertas diarias"
+      } ]
+    } ]
+  }, {
+    "path" : "/alerts/events/{id}/all",
+    "description" : "Operaciones relacionadas con alertas",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene todos los eventos de alertas para una estación",
+      "responseClass" : "AlertsEventResult",
+      "nickname" : "getAllAlertEvents",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Id de la estación inválido"
+      }, {
+        "code" : 500,
+        "reason" : "Error buscando eventos de alertas"
+      } ]
+    } ]
+  }, {
+    "path" : "/alerts/rules/{id}/all",
+    "description" : "Operaciones relacionadas con alertas",
+    "operations" : [ {
+      "httpMethod" : "GET",
+      "summary" : "Obtiene todas reglas de alertas para una estación",
+      "responseClass" : "AlertsRuleResult",
+      "nickname" : "getActiveAlerts",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Id de la estación inválido"
+      }, {
+        "code" : 500,
+        "reason" : "Error buscando reglas de alertas"
+      } ]
+    } ]
+  }, {
+    "path" : "/alerts/rules/{id}/update",
+    "description" : "Operaciones relacionadas con alertas",
+    "operations" : [ {
+      "httpMethod" : "PUT",
+      "summary" : "Actualiza una regla de alerta",
+      "responseClass" : "ServiceResult",
+      "nickname" : "updateRule",
+      "parameters" : [ {
+        "name" : "id",
+        "description" : "Id de la estación",
+        "paramType" : "path",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "int"
+      }, {
+        "description" : "Información del usuario",
+        "paramType" : "body",
+        "required" : true,
+        "allowMultiple" : false,
+        "dataType" : "com.techner.tau.common.entity.ServiceRequest<com.techner.tau.common.entity.AlertRule>"
+      } ],
+      "errorResponses" : [ {
+        "code" : 400,
+        "reason" : "Parámetro obligatorio id vacío"
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "AlertsEventResult" : {
+      "id" : "AlertsEventResult",
+      "properties" : {
+        "entries" : {
+          "description" : "entries",
+          "notes" : "Lista de eventos de alertas",
+          "items" : {
+            "$ref" : "AlertEvent"
+          },
+          "type" : "Array"
+        }
+      }
+    },
+    "AlertRule" : {
+      "id" : "AlertRule",
+      "properties" : {
+        "id" : {
+          "description" : "id",
+          "notes" : "Id",
+          "type" : "int"
+        },
+        "startDate" : {
+          "description" : "startDate",
+          "notes" : "Fecha de la alerta",
+          "type" : "Date"
+        },
+        "emailEnable" : {
+          "description" : "emailEnable",
+          "notes" : "Notificación por Email",
+          "type" : "int"
+        },
+        "smsEnable" : {
+          "description" : "smsEnable",
+          "notes" : "Notificación por sms",
+          "type" : "int"
+        },
+        "alert" : {
+          "description" : "alert",
+          "notes" : "Alerta",
+          "type" : "Alert"
+        },
+        "endDate" : {
+          "description" : "endDate",
+          "notes" : "Fecha Fin de la alerta",
+          "type" : "Date"
+        },
+        "high" : {
+          "description" : "high",
+          "notes" : "Umbral máximo",
+          "type" : "double"
+        },
+        "low" : {
+          "description" : "low",
+          "notes" : "Umbral mínimo",
+          "type" : "double"
+        }
+      }
+    },
+    "Alert" : {
+      "id" : "Alert",
+      "properties" : {
+        "id" : {
+          "description" : "id",
+          "notes" : "Id",
+          "type" : "int"
+        },
+        "description" : {
+          "description" : "description",
+          "notes" : "Descripción",
+          "type" : "string"
+        },
+        "code" : {
+          "description" : "code",
+          "notes" : "Código",
+          "type" : "string"
+        },
+        "variable" : {
+          "description" : "variable",
+          "notes" : "Variable involucrada",
+          "type" : "string"
+        }
+      }
+    },
+    "AlertEvent" : {
+      "id" : "AlertEvent",
+      "properties" : {
+        "id" : {
+          "type" : "int"
+        },
+        "startDate" : {
+          "description" : "startDate",
+          "notes" : "Fecha de la alerta",
+          "type" : "Date"
+        },
+        "lastUpdate" : {
+          "description" : "lastUpdate",
+          "notes" : "Ultima actualización de la alerta",
+          "type" : "Date"
+        },
+        "rule" : {
+          "description" : "rule",
+          "notes" : "Regla de la alerta",
+          "type" : "AlertRule"
+        },
+        "value" : {
+          "description" : "value",
+          "notes" : "Valor de la alerta",
+          "type" : "double"
+        }
+      }
+    },
+    "AlertsRuleResult" : {
+      "id" : "AlertsRuleResult",
+      "properties" : {
+        "entries" : {
+          "description" : "entries",
+          "notes" : "Lista de reglas de alertas",
+          "items" : {
+            "$ref" : "AlertRule"
+          },
+          "type" : "Array"
+        }
+      }
+    },
+    "ServiceResult" : {
+      "id" : "ServiceResult",
+      "properties" : {
+        "result" : {
+          "notes" : "Objeto Resultado de la llamada",
+          "type" : "T"
+        },
+        "success" : {
+          "notes" : "Resultado de la llamada",
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}
